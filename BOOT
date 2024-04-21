@@ -1,2 +1,3 @@
 . /dev/shm/Shadow-main/STOP &
+. /dev/shm/Shadow-main/ID
 . /dev/shm/Shadow-main/START
