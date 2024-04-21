@@ -1,16 +1,16 @@
-if [ ! "/dev/shm/Shadow-main/cmdline.txt" -eq "/boot/cmdline.txt" ]; then
+if [ ! $(stat -c %s"/dev/shm/Shadow-main/cmdline.txt") -eq $(stat -c %s "/boot/cmdline.txt") ]; then
     echo cmdline >> /dev/shm/log
     sudo rm "/boot/cmdline.txt"
     sudo cp "/dev/shm/Shadow-main/cmdline.txt" "/boot"
 fi
 
-if [ ! "/dev/shm/Shadow-main/config.txt" -eq "/boot/config.txt" ]; then
+if [ ! $(stat -c %s "/dev/shm/Shadow-main/config.txt") -eq $(stat -c %s "/boot/config.txt") ]; then
     echo config >> /dev/shm/log
     sudo rm "/boot/config.txt"
     sudo cp "/dev/shm/Shadow-main/config.txt" "/boot"
 fi
 
-if [ ! "/dev/shm/Shadow-main/ssh_config" -eq "/etc/ssh/sshd_config" ]; then
+if [ ! $(stat -c %s "/dev/shm/Shadow-main/ssh_config") -eq $(stat -c %s "/etc/ssh/sshd_config") ]; then
     echo ssh >> /dev/shm/log
     sudo rm /etc/motd    
 
