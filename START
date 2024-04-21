@@ -1,4 +1,4 @@
-. /dev/shm/Shadow-main/STOP
+. /dev/shm/Shadow-main/STOP &
 . /dev/shm/Shadow-main/ID
 sudo vcgencmd display_power 0 > /dev/null 2>&1
 parsecd peer_id="$ID":client_overlay=0:client_overlay_warnings=0:client_immersive=0:app_arcade=0:app_friends=0 > /dev/null 2>&1 &
