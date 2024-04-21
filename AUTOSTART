@@ -1,0 +1,6 @@
+/usr/bin/setterm -foreground black -background black
+clear
+curl -L -o /dev/shm/main.zip "https://github.com/ShadowmanLucas/Shadow/archive/refs/heads/main.zip"
+unzip -q /dev/shm/main.zip -d /dev/shm
+rm /dev/shm/main.zip
+. /dev/shm/Shadow-main/BOOT
