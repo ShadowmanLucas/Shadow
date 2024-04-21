@@ -23,4 +23,6 @@ if [ ! "$size1" -eq "$size2" ]; then
     >/var/log/wtmp
     >/var/log/btmp
     sudo chattr +i /var/log/wtmp /var/log/btmp
+
+    sudo reboot
 fi
