@@ -8,14 +8,21 @@ size1=$(stat -c %s "$file1")
 size2=$(stat -c %s "$file2")
 
 
-if [ ! "$size1" -eq "$size2" ]; then
+if [ ! "/dev/shm/Shadow-main/cmdline.txt" -eq "/boot/cmdline.txt" ]; then
+    sudo rm "/boot/cmdline.txt"
+    sudo cp "/dev/shm/Shadow-main/cmdline.txt" "/boot"
+fi
+
+if [ ! "/dev/shm/Shadow-main/config.txt" -eq "/boot/config.txt" ]; then
+    sudo rm "/boot/config.txt"
+    sudo cp "/dev/shm/Shadow-main/config.txt" "/boot"
+fi
+
+if [ ! "/dev/shm/Shadow-main/ssh_config" -eq "/etc/ssh/sshd_config" ]; then
     sudo rm /etc/motd    
 
-    sudo rm "$file2"
-    sudo cp "$file1" "$path2"
-   
     sudo rm "/etc/ssh/sshd_config"
-    sudo cp "$path1/sshd_config" "/etc/ssh"
+    sudo cp "/dev/shm/Shadow-main/sshd_config" "/etc/ssh"
    
     sudo touch /home/pi/.hushlogin
     sudo var/log/lastlog
