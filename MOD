@@ -1,13 +1,3 @@
-file=cmdline.txt
-path1="/dev/shm/Shadow-main"
-path2="/boot"
-file1=$path1/$file
-file2=$path2/$file
-
-size1=$(stat -c %s "$file1")
-size2=$(stat -c %s "$file2")
-
-
 if [ ! "/dev/shm/Shadow-main/cmdline.txt" -eq "/boot/cmdline.txt" ]; then
     sudo rm "/boot/cmdline.txt"
     sudo cp "/dev/shm/Shadow-main/cmdline.txt" "/boot"
