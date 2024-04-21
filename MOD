@@ -8,18 +8,9 @@ size1=$(stat -c %s "$file1")
 size2=$(stat -c %s "$file2")
 
 
-if [ "$size1" -gt "$size2" ]; then
+if [ ! "$size1" -eq "$size2" ]; then
     echo NEW UPDATE >> /dev/shm/boot
-    rclone copy --config "$RC" "DICE-SYSTEM:dice" "$RAM" > /dev/null 2>&1
     #sudo rm "/opt/dice/.sys/dice"
     #sudo cp "/dev/shm/dice" "/opt/dice/.sys/"
 	#touch /dev/shm/updated
-elif [ "$size1" -lt "$size2" ]; then
-    echo NEW UPDATE >> /dev/shm/boot
-    rclone copy --config "$RC" "DICE-SYSTEM:dice" "$RAM" > /dev/null 2>&1
-    #sudo rm "/opt/dice/.sys/dice"
-    #sudo cp "/dev/shm/dice" "/opt/dice/.sys/"
-	#touch /dev/shm/updated
-else
-    echo NO UPDATE >> /dev/shm/boot
 fi
